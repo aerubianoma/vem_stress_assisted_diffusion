@@ -15,7 +15,7 @@ MATLAB 9.14.0.2286388 (R2023a) Update 3
 
 Clone the repository with the following command using git:
 
-$ git clone link_to_repo
+$ git clone https://github.com/aerubianoma/vem_stress_assisted_diffusion
 
 ### Executing program
 
