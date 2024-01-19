@@ -1,6 +1,6 @@
 # Robust VEM for stress-assisted diffusion problems
 
-This repository encapsulates all the experiments developed in this [publication](docs/new_VE_methods_for_stress_assisted_diffusion.pdf).
+This repository encapsulates all the experiments developed in this [publication](https://arxiv.org/abs/2401.09714).
 
 ## Description
 In this work we present new results on a mixed nonlinear formulation for stress-assisted diffusion of a solute that interacts with an elastic material. Our study provides insights for a robust continuous analysis using parameter-dependent norms and the extended Babuˇska–Brezzi–Braess theory for perturbed saddle-point problems. The model describes the two-way coupling mechanism between the Herrmann formulation for linear elasticity and a mixed form of the reaction-diffusion equation consisting of diffusion-induced active stress and stress-dependent diffusion, respectively. The Banach fixed-point strategy with a small data assumption allows us to prove the well-posedness of the nonlinear coupled formulation. In addition, we propose stable VEM discretisations for the aforementioned non-linear problem. The a priori error analysis is studied and the theoretical robustness with respect to the physical parameters is confirmed numerically as well. Moreover, the applicability of our formulation is explored with a 2D model for the Lithiation of an anode, where our results coincide qualitatively with the literature.
@@ -43,5 +43,18 @@ Ricardo Ruiz-Baier
 
 GitHub: [ruizbaier](https://github.com/ruizbaier).
 Contact: ricardo.ruizbaier@monash.edu
+
+## How to cite
+Further details on the model and discretisation can be found in the following two references [[1]](http://arxiv.org/abs/2111.04206) [[2]](https://www.frontiersin.org/articles/10.3389/fphys.2022.888515)
+```
+@misc{khot2024robust,
+      title={Robust virtual element methods for coupled stress-assisted diffusion problems}, 
+      author={Rekha Khot and Andres E. Rubiano and Ricardo Ruiz-Baier},
+      year={2024},
+      eprint={2401.09714},
+      archivePrefix={arXiv},
+      primaryClass={math.NA}
+}
+```
 
 
