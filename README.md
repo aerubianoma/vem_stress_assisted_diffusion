@@ -45,7 +45,7 @@ GitHub: [ruizbaier](https://github.com/ruizbaier).
 Contact: ricardo.ruizbaier@monash.edu
 
 ## How to cite
-Further details on the model and discretisation can be found in the following two references [[1]](http://arxiv.org/abs/2111.04206) [[2]](https://www.frontiersin.org/articles/10.3389/fphys.2022.888515)
+Further details on the model and discretisation can be found in the following reference [[1]](https://arxiv.org/abs/2401.09714)
 ```
 @misc{khot2024robust,
       title={Robust virtual element methods for coupled stress-assisted diffusion problems}, 
