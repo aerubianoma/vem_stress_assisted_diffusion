@@ -63,7 +63,7 @@ tol = 1.e-8;
 
 %% Load mesh and domain
 
-mesh_type = 'polygonal';
+mesh_type = 'kangaroo';
 mesh_file = strcat(mesh_type, num2str(mesh), '.mat');
 load(mesh_file);
 
@@ -178,12 +178,14 @@ end
 
 figure(2); 
 showresult_zeta(nodeI_zeta,elemI_zeta,data_diffusion.zeta_exact,zetahI);
+colormap summer;
 
 %zeta_file = strcat('zeta_sol_',mesh_type,num2str(mesh),'.fig');
 %saveas(gcf, fullfile('fancy_plots/k20', zeta_file));
 
 figure(3);
 showresult_p_phi(nodeI_p,elemI_p,data_stress.pexact,phI,data_diffusion.phi_exact,phihI);
+colormap summer;
 
 %p_phi_file = strcat('p_phi_sol_',mesh_type,num2str(mesh),'.fig');
 %saveas(gcf, fullfile('fancy_plots/k20', p_phi_file));
