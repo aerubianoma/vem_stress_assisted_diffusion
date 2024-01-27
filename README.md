@@ -47,13 +47,12 @@ Contact: ricardo.ruizbaier@monash.edu
 ## How to cite
 Further details on the model and discretisation can be found in the following reference [[1]](https://arxiv.org/abs/2401.09714)
 ```
-@misc{khot2024robust,
-      title={Robust virtual element methods for coupled stress-assisted diffusion problems}, 
-      author={Rekha Khot and Andres E. Rubiano and Ricardo Ruiz-Baier},
-      year={2024},
-      eprint={2401.09714},
-      archivePrefix={arXiv},
-      primaryClass={math.NA}
+@article{khot2024robust,
+    title={Robust virtual element methods for coupled stress-assisted diffusion problems},
+    author={Rekha Khot and Andres E. Rubiano and Ricardo Ruiz-Baier},
+    year={2024},
+    volume={2401.09714},
+    journal={arXiv prerint},
 }
 ```
 
