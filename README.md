@@ -1,6 +1,6 @@
 # Robust VEM for stress-assisted diffusion problems
 
-This repository encapsulates all the experiments developed in this [publication](https://arxiv.org/abs/2401.09714).
+This repository encapsulates all the experiments developed in this [pre-print](https://arxiv.org/abs/2401.09714).
 
 ## Description
 In this work we present new results on a mixed nonlinear formulation for stress-assisted diffusion of a solute that interacts with an elastic material. Our study provides insights for a robust continuous analysis using parameter-dependent norms and the extended Babuˇska–Brezzi–Braess theory for perturbed saddle-point problems. The model describes the two-way coupling mechanism between the Herrmann formulation for linear elasticity and a mixed form of the reaction-diffusion equation consisting of diffusion-induced active stress and stress-dependent diffusion, respectively. The Banach fixed-point strategy with a small data assumption allows us to prove the well-posedness of the nonlinear coupled formulation. In addition, we propose stable VEM discretisations for the aforementioned non-linear problem. The a priori error analysis is studied and the theoretical robustness with respect to the physical parameters is confirmed numerically as well. Moreover, the applicability of our formulation is explored with a 2D model for the Lithiation of an anode, where our results coincide qualitatively with the literature.
