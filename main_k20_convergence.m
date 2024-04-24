@@ -209,32 +209,45 @@ end
 Err_V1_Q1 = sqrt(Err_u_ratio.^2+Err_p_ratio.^2);
 Err_V2_Q2 = sqrt(Err_zeta_ratio.^2+Err_phi_ratio.^2);
 
+total_Err = sqrt(Err_V1_Q1.^2+Err_V2_Q2.^2);
+
 figure(5);
 
-showrateh(h,Err_V1_Q1,[0 0.4470 0.7410],'$||(\mathbf{u}-\mathbf{u}_h,\tilde{p}-\tilde{p}_h)||_{\mathbf{V}_1\times Q_1}$' ...
-           ,Err_V2_Q2, [0.85 0.33 0.1],'$||(\mathbf{\zeta}-\mathbf{\zeta}_h,\varphi-\varphi_h)||_{\mathbf{V}_2\times Q_2}$')
+%showrateh(h,Err_V1_Q1,[0 0.4470 0.7410],'$||(\mathbf{u}-\mathbf{u}_h,\tilde{p}-\tilde{p}_h)||_{\mathbf{V}_1\times Q_1}$' ...
+%           ,Err_V2_Q2, [0.85 0.33 0.1],'$||(\mathbf{\zeta}-\mathbf{\zeta}_h,\varphi-\varphi_h)||_{\mathbf{V}_2\times Q_2}$')
+
+showrateh(h,total_Err,[0 0.4470 0.7410],'$||(\mathbf{u}-\mathbf{u}_h,\tilde{p}-\tilde{p}_h,\mathbf{\zeta}-\mathbf{\zeta}_h,\varphi-\varphi_h)||_{\mathbf{V}_1\times Q_1\times \mathbf{V}_2\times Q_2}$')
+
 
 %error_convergence_file = strcat('convergence_plot_',mesh_type,'.fig');
 %saveas(gcf, fullfile('fancy_plots/k20', error_convergence_file));
 
-rates_V1_Q1 = zeros(size(Err_V1_Q1));
-rates_V2_Q2 = zeros(size(Err_V2_Q2));
+% rates_V1_Q1 = zeros(size(Err_V1_Q1));
+% rates_V2_Q2 = zeros(size(Err_V2_Q2));
 
-for i=1:size(rates_V1_Q1,1)-1
+total_rates = zeros(size(total_Err));
 
-    rates_V1_Q1(i+1) = log(Err_V1_Q1(i+1)/Err_V1_Q1(i))/log(h(i+1)/h(i));
-    rates_V2_Q2(i+1) = log(Err_V2_Q2(i+1)/Err_V2_Q2(i))/log(h(i+1)/h(i));
+for i=1:size(total_rates,1)-1
+
+    % rates_V1_Q1(i+1) = log(Err_V1_Q1(i+1)/Err_V1_Q1(i))/log(h(i+1)/h(i));
+    % rates_V2_Q2(i+1) = log(Err_V2_Q2(i+1)/Err_V2_Q2(i))/log(h(i+1)/h(i));
+    total_rates(i+1) = log(total_Err(i+1)/total_Err(i))/log(h(i+1)/h(i));
 
 end
 
-fprintf('\n');
-disp('Table: Error elasticity')
-colname = {'#Dof','h','$\mathbf{V}_1\times Q_1$ norm','Ratio'};
-disptable(colname,N_psp1,[],h,'%0.3e',Err_V1_Q1,'%0.2e',rates_V1_Q1,'%1e');
+% fprintf('\n');
+% disp('Table: Error elasticity')
+% colname = {'#Dof','h','$\mathbf{V}_1\times Q_1$ norm','Ratio'};
+% disptable(colname,N_psp1,[],h,'%0.3e',Err_V1_Q1,'%0.2e',rates_V1_Q1,'%1e');
+% 
+% fprintf('\n');
+% disp('Table: Error transport')
+% colname = {'#Dof','h','$\mathbf{V}_2\times Q_2$ norm','Ratio'};
+% disptable(colname,N_psp2,[],h,'%0.3e',Err_V2_Q2,'%0.2e',rates_V2_Q2,'%1e');
 
 fprintf('\n');
 disp('Table: Error transport')
-colname = {'#Dof','h','$\mathbf{V}_2\times Q_2$ norm','Ratio'};
-disptable(colname,N_psp2,[],h,'%0.3e',Err_V2_Q2,'%0.2e',rates_V2_Q2,'%1e');
+colname = {'#Dof','h','Error on $\mathbf{V}_1\times Q_1 \times \mathbf{V}_2\times Q_2$','Ratio'};
+disptable(colname,N_psp1+N_psp2,[],h,'%0.2e',total_Err,'%0.2e',total_rates,'%1.2e');
 
 toc
