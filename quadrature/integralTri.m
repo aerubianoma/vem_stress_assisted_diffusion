@@ -1,5 +1,5 @@
 function Int = integralTri(fun,n,nodeT,elemT)
-%integralTri approximates integrals in a polygonal domain with trianguation (nodeT,elemT).
+%integralTri approximates integrals in a polygonal domain with triangulation (nodeT,elemT).
 % n: n-th order quadrature rule
 % fun: one or more anonymous functions, e.g. fun = @(x,y) [f1(x,y), f2(x,y)]
 

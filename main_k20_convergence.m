@@ -7,7 +7,7 @@ tic;
 
 %% Mesh size
 
-mesh = [8;12;16;20];
+mesh = [4;8;12;16];
 
 maxIt = size(mesh,1);
 
@@ -54,7 +54,7 @@ tol = 1.e-8;
 
 %% Convergence rate experiment
 
-for k = 1:maxIt
+for actual_mesh = 1:maxIt
 
     %% Variety of domains with polygonal discretisation:
 
@@ -66,8 +66,8 @@ for k = 1:maxIt
     
     %% Load mesh and domain
 
-    mesh_type = 'polygonal';
-    mesh_file = strcat(mesh_type, num2str(mesh(k)), '.mat');
+    mesh_type = 'kangaroo';
+    mesh_file = strcat(mesh_type, num2str(mesh(actual_mesh)), '.mat');
     load(mesh_file);
     
     %% print actual mesh and # elements
@@ -168,14 +168,14 @@ for k = 1:maxIt
 
     % For error plots and tables
 
-    N_psp1(k) = length(uh)+length(ph);
-    N_psp2(k) = length(zetah)+length(phih);  
-    h(k) = 1/sqrt(size(elem,1));
+    N_psp1(actual_mesh) = length(uh)+length(ph);
+    N_psp2(actual_mesh) = length(zetah)+length(phih);  
+    h(actual_mesh) = 1/sqrt(size(elem,1));
 
-    Err_zeta_ratio(k) = Err_zeta(end);
-    Err_phi_ratio(k) = Err_phi(end);
-    Err_u_ratio(k) = Err_u(end);
-    Err_p_ratio(k) = Err_p(end);
+    Err_zeta_ratio(actual_mesh) = Err_zeta(end);
+    Err_phi_ratio(actual_mesh) = Err_phi(end);
+    Err_u_ratio(actual_mesh) = Err_u(end);
+    Err_p_ratio(actual_mesh) = Err_p(end);
 
     %% Projection for plotting
     

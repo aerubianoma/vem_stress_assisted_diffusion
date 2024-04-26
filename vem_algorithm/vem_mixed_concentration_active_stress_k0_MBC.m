@@ -129,7 +129,7 @@ for iel = 1:NT
     D(1:4*Nv, :) = blkdiag(Dbd, Dbd);
     D(end-1,:) = integralTri(divmm2,4,nodeT,elemT);
     D(end,:) = integralTri(divmm3,4,nodeT,elemT);
-    
+
     % --------- elliptic projection -----------
 
     % B
