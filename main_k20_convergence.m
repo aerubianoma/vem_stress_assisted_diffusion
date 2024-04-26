@@ -7,7 +7,7 @@ tic;
 
 %% Mesh size
 
-mesh = [4;8;12;16];
+mesh = [12];
 
 maxIt = size(mesh,1);
 
@@ -62,11 +62,12 @@ for actual_mesh = 1:maxIt
     
     %% unit-square with different discretisations: 
 
-    % nonconvex, polygonal, square, gunelve, distortionpolygonal, distortion2polygonal
+    % nonconvex, polygonal, square, distortionpolygonal,
+    % distortion2polygonal, triangular, crossed
     
     %% Load mesh and domain
 
-    mesh_type = 'kangaroo';
+    mesh_type = 'squareNew';
     mesh_file = strcat(mesh_type, num2str(mesh(actual_mesh)), '.mat');
     load(mesh_file);
     

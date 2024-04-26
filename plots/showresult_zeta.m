@@ -17,13 +17,13 @@ set(gcf,'Units','normal');
 %hold on;
 %plot(node(:,1),node(:,2),'k.', 'MarkerSize', 4);
 
-tiledlayout(1,2)
+tiledlayout(1,4)
 
 %% Plot exact solution first component
 
-%nexttile;
-%zeta_exact = zeta(node); zeta_exact = zeta_exact(:,1);
-%showsolution(node,elem,zeta_exact(1:size(node,1)),'$\zeta_1$');
+nexttile;
+zeta_exact = zeta(node); zeta_exact = zeta_exact(:,1);
+showsolution(node,elem,zeta_exact(1:size(node,1)),'$\zeta_1$');
 
 
 %% Plot numerical solution
@@ -33,9 +33,9 @@ showsolution(node,elem,zetah(1:size(node,1),1),'$\zeta_{1,h}$');
 
 %% Plot exact solution second component
 
-%nexttile;
-%zeta_exact = zeta(node); zeta_exact = zeta_exact(:,2);
-%showsolution(node,elem,zeta_exact(1:size(node,1)),'$\zeta_2$');
+nexttile;
+zeta_exact = zeta(node); zeta_exact = zeta_exact(:,2);
+showsolution(node,elem,zeta_exact(1:size(node,1)),'$\zeta_2$');
 
 
 %% Plot numerical solution
