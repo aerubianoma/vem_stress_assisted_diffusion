@@ -7,7 +7,7 @@ tic;
 
 %% Mesh size
 
-mesh = [12];
+mesh = [1];
 
 maxIt = size(mesh,1);
 
@@ -67,7 +67,7 @@ for actual_mesh = 1:maxIt
     
     %% Load mesh and domain
 
-    mesh_type = 'squareNew';
+    mesh_type = 'kangaroo';
     mesh_file = strcat(mesh_type, num2str(mesh(actual_mesh)), '.mat');
     load(mesh_file);
     
@@ -180,8 +180,8 @@ for actual_mesh = 1:maxIt
 
     %% Projection for plotting
     
-    [zetahI,phihI,nodeI_zeta,elemI_zeta] = projection_V2_k0(node,elem,zetah,phih,info_diffusion_next,uh);
-    [phI,nodeI_p,elemI_p] = projection_Q1(node,elem,ph,1,uh);
+    [zetahI,phihI,nodeI_zeta,elemI_zeta] = projection_V2_k0(node,elem,zetah,phih,info_diffusion_next,uh*0);
+    [phI,nodeI_p,elemI_p] = projection_Q1(node,elem,ph,1,uh*0);
 
     % Plots
     
