@@ -7,7 +7,7 @@ tic;
 
 %% Mesh size
 
-mesh = [1];
+mesh = [4];
 
 maxIt = size(mesh,1);
 
