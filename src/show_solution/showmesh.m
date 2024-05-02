@@ -40,4 +40,6 @@ else
     facecolor = [0.80,0.11,0.23];
 end
 set(h,'facecolor',facecolor,'edgecolor','k');
+set(gca,'xtick',[])
+set(gca,'ytick',[])
 axis equal; axis tight;

@@ -5,9 +5,11 @@ clear variables;
 %% Mesh size
 
 % For kangaroo
-mesh = [2;4;6;8];
+
+mesh = [2;3;4;5];
 
 % Other cases
+
 %mesh = [8;12;16;20];
 
 maxIt = size(mesh,1);
