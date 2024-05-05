@@ -9,7 +9,13 @@ tic;
 
 %% Mesh size
 
-mesh = [8;12;16;20];
+% For kangaroo
+
+mesh = [2;3;4;5];
+
+% Other cases
+
+%mesh = [8;12;16;20];
 
 maxIt = size(mesh,1);
 
@@ -39,7 +45,7 @@ Err_phi_ratio = zeros(maxIt,1);
 
 %% For $\lambda$
 
-variation = [5.e1;1.e2;5.e2;1.e3;5.e3];
+%variation = [5.e1;1.e2;5.e2;1.e3;5.e3];
 
 %% For $\mu$
 
@@ -47,7 +53,7 @@ variation = [5.e1;1.e2;5.e2;1.e3;5.e3];
 
 %% For $\theta$
 
-%variation = [5.e-4;1.e-4;5.e-3;1.e-3;5.e-2];
+variation = [5.e-4;1.e-4;5.e-3;1.e-3;5.e-2];
 
 %% Save errors and $M$ constant
 
@@ -59,8 +65,8 @@ for c = 1:size(variation,1)
 
     %% Variable to check robustness change name corresponding to the parameter
     
-    lambda = variation(c);
-    variable_string = '$\lambda$';
+    theta = variation(c);
+    variable_string = '$\theta$';
     
     fprintf('constant value: %d\n', variation(c));
     
@@ -89,11 +95,11 @@ for c = 1:size(variation,1)
         
         %% unit-square with different discretisations: 
     
-        % nonconvex, polygonal, square, distortionpolygonal, kangaroo
+        % nonconvex, polygonal, square, distortionpolygonal, kangaroo, crossed
         
         %% Load mesh and domain
     
-        mesh_type = 'nonconvex';
+        mesh_type = 'kangaroo';
         mesh_file = strcat(mesh_type, num2str(mesh(k)), '.mat');
         load(mesh_file);
         

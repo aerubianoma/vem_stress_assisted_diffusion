@@ -37,6 +37,10 @@ h1.Label.Rotation = 0;
 h1.Label.Interpreter = 'latex';
 h1.Label.Position = [0.5 Lc+0.05];
 
+s = 0.9*Err(1,1)/h(1)^pk;
+hold on
+G2 = loglog(1./h.^2,s*h.^pk,'k.-');
+
 xlabel('Number of elements');
 ylabel('$\overline{\textnormal{e}}_*$');
 xticks(1./(h.^2));
