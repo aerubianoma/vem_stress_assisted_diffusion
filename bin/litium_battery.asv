@@ -16,12 +16,12 @@ bdNeumann2 = '(x.^2+y.^2)==1.^2'; % '(x.^2+y.^2)==1.^2'; %
 
 %% Constant stress-assisted coefficient
 
-m0 = 1.e2;
-m1 = 2.55e-8;
+m0 = 1.e12;
+m1 = -1.e12;
 
 %% Data for vem
 
-data_stress = mixed_concentration_active_stress_data_MBC_battery_p_trac(mu,lambda);
+data_stress = mixed_concentration_active_stress_data_MBC_battery(mu,lambda);
 data_diffusion = mixed_stress_assisted_diffusion_data_MBC_battery(theta,mu);
 
 %% Obtain M parameter using optimization routine
@@ -76,7 +76,7 @@ while true
 
     %% Track iterations
 
-    it_ct = it_ct+1;
+    it_ct = it_ct+1
     it = [it, it_ct];
 
     %% Stop criteria
@@ -105,7 +105,7 @@ while true
     uh_prev = uh;
     ph_prev = ph;
     zetah_prev = zetah;
-    phih_prev = phih;        
+    phih_prev = phih;       
     
 end
 
@@ -121,6 +121,7 @@ showresult_u_battery(node,elem,uh);
 
 figure(2); 
 showresult_zeta_battery(nodeI_zeta,elemI_zeta,zetahI);
+
 
 figure(3);
 showresult_p_phi_battery(nodeI_p,elemI_p,phI,phihI);
@@ -153,7 +154,7 @@ m1 = 0;
 
 %% Data for vem
 
-data_stress = mixed_concentration_active_stress_data_MBC_battery_p_trac(mu,lambda);
+data_stress = mixed_concentration_active_stress_data_MBC_battery(mu,lambda);
 data_diffusion = mixed_stress_assisted_diffusion_data_MBC_battery(theta,mu);
 
 %% Obtain M parameter using optimization routine
@@ -208,7 +209,7 @@ while true
 
     %% Track iterations
 
-    it_ct = it_ct+1;
+    it_ct = it_ct+1
     it = [it, it_ct];
 
     %% Stop criteria
@@ -249,13 +250,14 @@ end
 % Plots
 
 figure(4)
-showresult_u_battery(node,elem,uh);
+showresult_u_battery(node,elem,uh); 
 
 figure(5); 
 showresult_zeta_battery(nodeI_zeta,elemI_zeta,zetahI);
 
 figure(6);
 showresult_p_phi_battery(nodeI_p,elemI_p,phI,phihI);
+
 drawnow;   
 
 toc;
@@ -267,7 +269,6 @@ phih2 = phih;
 %% Plot concentration in radial direction
 
 % Generate n equally spaced points along the line
-
 x_values = linspace(1, max(nodeI_p(:,1)), 100);
 y_values = linspace(0, 0, 100);
 NT = size(elemI_p,1);

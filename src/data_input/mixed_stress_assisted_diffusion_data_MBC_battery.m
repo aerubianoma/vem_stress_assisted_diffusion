@@ -20,13 +20,13 @@ function pde = mixed_stress_assisted_diffusion_data_MBC_battery(theta,mu)
     function val = phi_D(p)
         x = p(:,1); 
         y = p(:,2);
-        val = 2.29e4 + 0*x; % 3.497e-6 + 0*x; % Ricardo's paper % % 3.497*rand*10^(-5) + 0*x; % random distribution of concentration %
+        val = 2.29e-14 + 0*x; % 3.497e-6 + 0*x; % Ricardo's paper % % 3.497*rand*10^(-5) + 0*x; % random distribution of concentration %
     end
 
     function val = zeta_N(p)
         x = p(:,1); 
         y = p(:,2);
-        val = -2 + 0*x; % 3.497e-6 + 0*x; % Ricardo's paper % % 3.497*rand*10^(-5) + 0*x; % random distribution of concentration %
+        val = 0 + 0*x; % 3.497e-6 + 0*x; % Ricardo's paper % % 3.497*rand*10^(-5) + 0*x; % random distribution of concentration %
     end
 
 

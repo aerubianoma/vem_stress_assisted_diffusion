@@ -28,9 +28,9 @@ tiledlayout(1,2)
 
 nexttile;
 showsolution_battery(node,elem,ph(1:size(node,1),1),'$\tilde{p}_h$');
-hold on 
-fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
-fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
+%hold on 
+%fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
+%fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
 
 %% Plot exact solution phi
 
@@ -41,8 +41,8 @@ fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
 %% Plot numerical solution
 nexttile;
 showsolution_battery(node,elem,phih(1:size(node,1),1),'$\varphi_h$');
-hold on 
-fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
-fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
+%hold on 
+%fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
+%fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
 
 

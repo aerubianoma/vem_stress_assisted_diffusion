@@ -34,9 +34,9 @@ tiledlayout(1,2)
 
 nexttile;
 showsolution_battery(node,elem,uh(1:size(node,1),1),'$u_{1,h}$');
-hold on 
-fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
-fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
+%hold on 
+%fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
+%fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
 
 %% Plot exact solution second component
 
@@ -49,9 +49,9 @@ fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
 
 nexttile;
 showsolution_battery(node,elem,uh(size(node,1)+NE+1:size(node,1)+NE+size(node,1),1),'$u_{2,h}$');
-hold on 
-fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
-fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
+%hold on 
+%fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
+%fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
 
 
 %nexttile;

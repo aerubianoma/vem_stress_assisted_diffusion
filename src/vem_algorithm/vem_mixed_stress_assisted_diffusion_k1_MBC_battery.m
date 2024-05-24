@@ -341,10 +341,10 @@ for iel = 1:NT
 
 
     %% Stiffness matrix A %%
-    M1_l = M1_local(m0,m1,pde.mu,c_w,c_r,hK,xK,yK); % Here comes the function to calculate locally M1
+    M1_l = M1_local_battery(m0,m1,pde.mu,c_w,c_r,hK,xK,yK); % Here comes the function to calculate locally M1
     M1 = M1_l.M1;
-    Ms = integralTri(@(x,y)(M1([x,y])*basisP1_2(x,y))'*basisP1_2(x,y),4,nodeT,elemT);
-    Gs = integralTri(@(x,y) M1([x,y]),4,nodeT,elemT);
+    Ms = integralTri(@(x,y)(M1([x,y])*basisP1_2(x,y))'*basisP1_2(x,y),4,nodeT,elemT)
+    Gs = integralTri(@(x,y) M1([x,y]),4,nodeT,elemT)
     AK  = Pis'*Ms*Pis + norm(Gs,'fro')*(I-Pi)'*(I-Pi);
     AK = AK.*sgnK;
     AK = reshape(AK,1,[]); % straighten as row vector for easy assembly 
@@ -456,9 +456,9 @@ ff(bdDofD) = [(bdheD/2).*phi_D(bde1D);(bdheD/2).*phi_D(bde2D)];
 
 zeta_N = pde.zeta_N;
 sol = zeros(NNdof,1);
-sol(bdDofD) = [zeta_N(bde1D);zeta_N(bde2D)];
-
-ff = ff - kk*sol;
+% sol(bdDofD) = [zeta_N(bde1D);zeta_N(bde2D)];
+% 
+% ff = ff - kk*sol;
 
 
 

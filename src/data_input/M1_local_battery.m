@@ -52,25 +52,25 @@ end
 
     %% Ricardo's paper
 
-    %sigma = mu*[[w1x;(1/2)*(w1y+w2x)],[(1/2)*(w1y+w2x);w2y]] - r*eye(2);
+    sigma = mu*[[w1x;(1/2)*(w1y+w2x)],[(1/2)*(w1y+w2x);w2y]] - r*eye(2);
 
-    %M = m0*eye(2) + m0^2*sigma + m0^3*sigma^2;
+    M = m0*(eye(2) + m1*sigma)
 
-    %M_11 = M(1,1) + 0*x;
-    %M_12 = M(1,2) + 0*x;
-    %M_22 = M(2,1) + 0*x;
-    %detM = M_11*M_22-M_12.^2;
+    M_11 = M(1,1) + 0*x;
+    M_12 = M(1,2) + 0*x;
+    M_22 = M(2,2) + 0*x;
+    detM = M_11*M_22-M_12.^2;
 
     %% Taralova's thesis
 
-    M_11 = m0*exp(-m1*(mu*(w1x+w2y)-2*r)) + 0*x;
-    M_12 = 0 + 0*x;
-    M_22 = m0*exp(-m1*(mu*(w1x+w2y)-2*r)) + 0*x;
-    detM = M_11*M_22-M_12.^2;
+    %M_11 = m0*exp((-m1*(mu*(w1x+w2y)-2*r)/3)) + 0*x;
+    %M_12 = 0 + 0*x;
+    %M_22 = m0*exp((-m1*(mu*(w1x+w2y)-2*r)/3)) + 0*x;
+    %detM = M_11*M_22-M_12.^2;
 
-    M1_11 = M_22./detM;
-    M1_12 = -M_12./detM;
-    M1_22 = M_11./detM;
+    M1_11 = M_22./detM
+    M1_12 = -M_12./detM
+    M1_22 = M_11./detM
 
     M1_11 = matlabFunction(M1_11,'Vars',{x,y});  
     M1_12 = matlabFunction(M1_12,'Vars',{x,y}); 

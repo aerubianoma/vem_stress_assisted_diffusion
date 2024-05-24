@@ -30,9 +30,9 @@ tiledlayout(1,2)
 
 nexttile;
 showsolution_battery(node,elem,zetah(1:size(node,1),1),'$\zeta_{1,h}$');
-hold on 
-fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
-fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
+%hold on 
+%fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
+%fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
 
 
 %% Plot exact solution second component
@@ -46,6 +46,6 @@ fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
 
 nexttile;
 showsolution_battery(node,elem,zetah(1:size(node,1),2),'$\zeta_{2,h}$');
-hold on 
-fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
-fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);
+%hold on 
+%fplot(@(t) 5*sin(t), @(t) 5*cos(t),'--k','LineWidth',3);
+%fplot(@(t) sin(t), @(t) cos(t),'--k','LineWidth',3);

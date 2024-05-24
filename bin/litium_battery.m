@@ -16,7 +16,6 @@ bdNeumann2 = '(x.^2+y.^2)==1.^2'; % '(x.^2+y.^2)==1.^2'; %
 
 %% Constant stress-assisted coefficient
 
-m0 = 1;
 m1 = 0;
 
 %% Data for vem
@@ -36,7 +35,7 @@ tol = 1.e-8;
     
 %% Load mesh and domain
 
-mesh_file = 'meshes/circle_circle_10000.mat';
+mesh_file = 'meshes/circle_circle_100.mat';
 load(mesh_file);
 
 %% print actual mesh and # elements
@@ -49,8 +48,6 @@ fprintf('Number of elements: %d\n', h)
 
 bdStruct1 = setboundary_curve(1/sqrt(sqrt(h)),node,elem,bdNeumann1);
 bdStruct2 = setboundary_curve(1/sqrt(sqrt(h)),node,elem,bdNeumann2);
-
-showmesh(node,elem);
 
 %% initial conditions:
 %% Coefficients of a polynom in \mathcal{M}_{1}
@@ -78,7 +75,7 @@ while true
 
     %% Track iterations
 
-    it_ct = it_ct+1;
+    it_ct = it_ct+1
     it = [it, it_ct];
 
     %% Stop criteria
@@ -90,7 +87,6 @@ while true
         u_stop = error_V1_battery(node,elem,uh-uh_prev,info_stress_next,data_stress);
         p_stop = error_Q1_battery(node,elem,ph-ph_prev,data_stress);     
         [zeta_stop,phi_stop] = error_V2_Q2_k1_battery(node,elem,zetah-zetah_prev,phih-phih_prev,info_diffusion_next,data_diffusion,M,m0,m1,info_stress_next);
-        sqrt(u_stop.^2+p_stop.^2)+sqrt(zeta_stop.^2+phi_stop.^2)
         if (sqrt(u_stop.^2+p_stop.^2)+sqrt(zeta_stop.^2+phi_stop.^2)) < tol
 
             fprintf('Total iterations: %d\n', it(end))
@@ -108,19 +104,19 @@ while true
     uh_prev = uh;
     ph_prev = ph;
     zetah_prev = zetah;
-    phih_prev = phih;        
+    phih_prev = phih;       
     
 end
 
 %% Projection for plotting
 
-[zetahI,phihI,nodeI_zeta,elemI_zeta] = projection_V2_k1(node,elem,zetah,phih,info_diffusion_next,data_diffusion,uh);
-[phI,nodeI_p,elemI_p] = projection_Q1(node,elem,ph,1,uh);
+[zetahI,phihI,nodeI_zeta,elemI_zeta] = projection_V2_k1(node,elem,zetah,phih,info_diffusion_next,data_diffusion,uh*0);
+[phI,nodeI_p,elemI_p] = projection_Q1(node,elem,ph,1,uh*0);
 
 % Plots
 
 figure(1)
-showresult_u_battery(node,elem,uh./1.e-6);
+showresult_u_battery(node,elem,uh);
 
 figure(2); 
 showresult_zeta_battery(nodeI_zeta,elemI_zeta,zetahI);
@@ -152,8 +148,7 @@ bdNeumann2 = '(x.^2+y.^2)==1.^2'; % '(x.^2+y.^2)==1.^2'; %
 
 %% stress-assisted coefficient
 
-m0 = 1;
-m1 = 1.e-5;
+m1 = 1.e2;
 
 %% Data for vem
 
@@ -172,7 +167,7 @@ tol = 1.e-8;
     
 %% Load mesh and domain
 
-mesh_file = 'meshes/circle_circle_10000.mat';
+mesh_file = 'meshes/circle_circle_100.mat';
 load(mesh_file);
 
 %% print actual mesh and # elements
@@ -185,8 +180,6 @@ fprintf('Number of elements: %d\n', h)
 
 bdStruct1 = setboundary_curve(1/sqrt(sqrt(h)),node,elem,bdNeumann1);
 bdStruct2 = setboundary_curve(1/sqrt(sqrt(h)),node,elem,bdNeumann2);
-
-showmesh(node,elem);
 
 %% initial conditions:
 %% Coefficients of a polynom in \mathcal{M}_{1}
@@ -214,7 +207,7 @@ while true
 
     %% Track iterations
 
-    it_ct = it_ct+1;
+    it_ct = it_ct+1
     it = [it, it_ct];
 
     %% Stop criteria
@@ -249,8 +242,8 @@ end
 
 %% Projection for plotting
 
-[zetahI,phihI,nodeI_zeta,elemI_zeta] = projection_V2_k1(node,elem,zetah,phih,info_diffusion_next,data_diffusion,uh);
-[phI,nodeI_p,elemI_p] = projection_Q1(node,elem,ph,1,uh);
+[zetahI,phihI,nodeI_zeta,elemI_zeta] = projection_V2_k1(node,elem,zetah,phih,info_diffusion_next,data_diffusion,uh*0);
+[phI,nodeI_p,elemI_p] = projection_Q1(node,elem,ph,1,uh*0);
 
 % Plots
 
@@ -274,8 +267,8 @@ phih2 = phih;
 %% Plot concentration in radial direction
 
 % Generate n equally spaced points along the line
-x_values = linspace(1, max(nodeI_p(:,1)), 10000);
-y_values = linspace(0, 0, 10000);
+x_values = linspace(1, max(nodeI_p(:,1)), 100);
+y_values = linspace(0, 0, 100);
 NT = size(elemI_p,1);
 concentration1 = zeros(size(y_values));
 concentration2 = zeros(size(y_values));

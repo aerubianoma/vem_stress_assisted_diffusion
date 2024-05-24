@@ -54,11 +54,11 @@ view(2); %3 for view(150,30);
 %     set(h,varargin{:});
 % end
 
-hold on 
-t = 0:pi/20:10*pi;
-lnh2 = plot3(5*sin(t), 5*cos(t),1.e10+0*sin(t),'-k','LineWidth',3);
-lnh1 = plot3(sin(t), cos(t),1.e10+0*sin(t),'-k','LineWidth',3);
-
-uistack(lnh1,'top')
-uistack(lnh2,'top')
-hold off
+% hold on 
+% t = 0:pi/20:10*pi;
+% lnh2 = plot3(5*sin(t), 5*cos(t),1.e10+0*sin(t),'-k','LineWidth',3);
+% lnh1 = plot3(sin(t), cos(t),1.e10+0*sin(t),'-k','LineWidth',3);
+% 
+% uistack(lnh1,'top')
+% uistack(lnh2,'top')
+% hold off

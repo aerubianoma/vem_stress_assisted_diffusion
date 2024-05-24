@@ -138,10 +138,10 @@ for iel = 1:NT
     Lapm2 = [0, 0, 0, 0, 1/(2*hK^2), 0];
     Lapm3 = [0, 0, 0, 1/hK^2, 0, 2/hK^2];
     B = zeros(Nmm, NdofA);
-    B(1:Nm, end-1) = 2*pde.mu*hK*Lapm1;
-    B(1:Nm, end) = 2*pde.mu*hK*Lapm2;
-    B(Nm+1:end, end) = 2*pde.mu*hK*Lapm3;
-    B(Nm+1:end, end-1) = 2*pde.mu*hK*Lapm2;
+    B(1:Nm, end-1) = pde.mu*hK*Lapm1;
+    B(1:Nm, end) = pde.mu*hK*Lapm2;
+    B(Nm+1:end, end) = pde.mu*hK*Lapm3;
+    B(Nm+1:end, end-1) = pde.mu*hK*Lapm2;
 
     % --- second term ---
 
@@ -162,13 +162,13 @@ for iel = 1:NT
     c3 = [Lapm2, Lapm3];
 
     for im = 1:Nmm
-        qmm{im} = @(x,y) 2*pde.mu*hK*(c2(im)*m2(x,y) + c3(im)*m3(x,y));
+        qmm{im} = @(x,y) pde.mu*hK*(c2(im)*m2(x,y) + c3(im)*m3(x,y));
     end
 
     for s = 1:2
         id = (1:NdofBd) + (s-1)*NdofBd;
         for im = 1:Nmm
-            pm = @(x,y) 2*pde.mu*Emm{s,im}(x,y);
+            pm = @(x,y) pde.mu*Emm{s,im}(x,y);
             qa = @(x,y) qmm{im}(x,y);
             F1 = 1/6*(sum(pm(x(v1),y(v1)).*Ne, 2) - qa(x(v1),y(v1)).*Ne(:,s));
             F2 = 1/6*(sum(pm(x(v2),y(v2)).*Ne, 2) - qa(x(v2),y(v2)).*Ne(:,s));
@@ -215,7 +215,7 @@ for iel = 1:NT
 
     % Stiffness matrix A for Vh
 
-    AK  = Pis'*G*Pis + (2*pde.mu)*(I-Pi)'*(I-Pi);
+    AK  = Pis'*G*Pis + (pde.mu)*(I-Pi)'*(I-Pi);
     AK = reshape(AK',1,[]); % straighten as row vector for easy assembly
 
     % Stiffness matrix B for Vh and Qh
@@ -270,7 +270,7 @@ for iel = 1:NT
     end
     
     
-    l_l = l_local_k_1(phi0,phi1,c_phi,hK,xK,yK);
+    l_l = l_local_k_1_battery(phi0,phi1,c_phi,hK,xK,yK);
     l = l_l.g;
     gxy = @(x,y) l([x,y])*[m1(x,y);m2(x,y);m3(x,y)];
     gK = (1/pde.lambda)*integralTri(gxy,4,nodeT,elemT);
@@ -347,9 +347,9 @@ if ~isempty(bdEdgeN)
     FN1 = -sigma_N(z1).*Ne(:,1); 
     FN2 = -sigma_N(z2).*Ne(:,1);
     FN3 = -sigma_N(ze).*Ne(:,1);
-    FN4 = -sigma_N(z1).*Ne(:,1);  
-    FN5 = -sigma_N(z2).*Ne(:,1);
-    FN6 = -sigma_N(ze).*Ne(:,1);
+    FN4 = -sigma_N(z1).*Ne(:,2);  
+    FN5 = -sigma_N(z2).*Ne(:,2);
+    FN6 = -sigma_N(ze).*Ne(:,2);
     FN = [FN1; FN2; FN3; FN4; FN5; FN6];
     ff = ff + accumarray(bdDofN(:), FN(:), [NNdof 1]);
 end
