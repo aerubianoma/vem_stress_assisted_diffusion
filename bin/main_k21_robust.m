@@ -230,4 +230,13 @@ showrate_robust(h,total_Err,variation,M_values,variable_string,'$M$',2)
 filename = strcat('../outputs/robust/',mesh_type,'/k21_',variable_string);
 saveas(gcf, fullfile(strcat(filename, '.fig')));
 
+%% decoupled error case
+
+figure(2);
+
+showrate_robust_decoupled(h,errors_V1_Q1,errors_V2_Q2,variation,M_values,variable_string,'$M$')
+
+error_robust_file = strcat('../outputs/robust/',mesh_type,'/k21_',variable_string,"_decoupled");
+saveas(gcf, fullfile(strcat(filename, '.fig')));
+
 toc

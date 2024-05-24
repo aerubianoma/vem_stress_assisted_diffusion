@@ -343,8 +343,8 @@ for iel = 1:NT
     %% Stiffness matrix A %%
     M1_l = M1_local_battery(m0,m1,pde.mu,c_w,c_r,hK,xK,yK); % Here comes the function to calculate locally M1
     M1 = M1_l.M1;
-    Ms = integralTri(@(x,y)(M1([x,y])*basisP1_2(x,y))'*basisP1_2(x,y),4,nodeT,elemT)
-    Gs = integralTri(@(x,y) M1([x,y]),4,nodeT,elemT)
+    Ms = integralTri(@(x,y)(M1([x,y])*basisP1_2(x,y))'*basisP1_2(x,y),4,nodeT,elemT);
+    Gs = integralTri(@(x,y) M1([x,y]),4,nodeT,elemT);
     AK  = Pis'*Ms*Pis + norm(Gs,'fro')*(I-Pi)'*(I-Pi);
     AK = AK.*sgnK;
     AK = reshape(AK,1,[]); % straighten as row vector for easy assembly 

@@ -11,11 +11,11 @@ tic;
 
 % For kangaroo
 
-mesh = [2;3;4;5];
+%mesh = [2;3;4;5];
 
 % Other cases
 
-%mesh = [8;12;16;20];
+mesh = [8;12;16;20];
 
 maxIt = size(mesh,1);
 
@@ -49,11 +49,11 @@ Err_phi_ratio = zeros(maxIt,1);
 
 %% For $\mu$
 
-%variation = 2*[5.e1;1.e2;5.e2;1.e3;5.e3];
+variation = 2*[5.e1;1.e2;5.e2;1.e3;5.e3];
 
 %% For $\theta$
 
-variation = [5.e-4;1.e-4;5.e-3;1.e-3;5.e-2];
+%variation = [5.e-4;1.e-4;5.e-3;1.e-3;5.e-2];
 
 %% Save errors and $M$ constant
 
@@ -65,8 +65,8 @@ for c = 1:size(variation,1)
 
     %% Variable to check robustness change name corresponding to the parameter
     
-    theta = variation(c);
-    variable_string = '$\theta$';
+    mu = variation(c);
+    variable_string = '$\mu$';
     
     fprintf('constant value: %d\n', variation(c));
     
@@ -99,7 +99,7 @@ for c = 1:size(variation,1)
         
         %% Load mesh and domain
     
-        mesh_type = 'kangaroo';
+        mesh_type = 'nonconvex';
         mesh_file = strcat(mesh_type, num2str(mesh(k)), '.mat');
         load(mesh_file);
         
@@ -226,6 +226,15 @@ format short g
 showrate_robust(h,total_Err,variation,M_values,variable_string,'$M$',1)
 
 filename = strcat('../outputs/robust/',mesh_type,'/k20_',variable_string);
+saveas(gcf, fullfile(strcat(filename, '.fig')));
+
+%% decoupled error case
+
+figure(2);
+
+showrate_robust_decoupled(h,errors_V1_Q1,errors_V2_Q2,variation,M_values,variable_string,'$M$')
+
+error_robust_file = strcat('../outputs/robust/',mesh_type,'/k20_',variable_string,"_decoupled");
 saveas(gcf, fullfile(strcat(filename, '.fig')));
 
 toc

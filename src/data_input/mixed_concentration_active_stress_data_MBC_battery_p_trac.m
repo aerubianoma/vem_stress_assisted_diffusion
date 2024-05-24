@@ -20,7 +20,7 @@ function pde = mixed_concentration_active_stress_data_MBC_battery_p_trac(mu,lamb
 
     function val = sigma_N(p)
         x = p(:,1); y = p(:,2);
-        val = -2.e4 + 0*x; %0 + 0*x;
+        val = 2.e-4 + 0*x; %0 + 0*x;
     end
 
 pde = struct('f',@f,'u_D',@u_D, 'sigma_N',@sigma_N, 'mu',mu, 'lambda',lambda);
