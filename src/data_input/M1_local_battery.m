@@ -54,7 +54,7 @@ end
 
     sigma = mu*[[w1x;(1/2)*(w1y+w2x)],[(1/2)*(w1y+w2x);w2y]] - r*eye(2);
 
-    M = m0*(eye(2) + m1*sigma);
+    M = m0*(eye(2) + m1*m0*sigma*sigma);
 
     M_11 = M(1,1) + 0*x;
     M_12 = M(1,2) + 0*x;
