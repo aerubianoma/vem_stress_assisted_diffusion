@@ -39,7 +39,7 @@ for traction = 1:size(traction_case,1)
         if coupling_case(coupling) == 0
             m1 = 0;
         elseif coupling_case(coupling) == 1
-            m1 = 1.e2;
+            m1 = 1.e3;
         end
 
         data_diffusion = mixed_stress_assisted_diffusion_data_MBC_battery(theta,mu);
@@ -201,10 +201,11 @@ end
 figure(242)
 hold on
 for j = 1:counter
-    plot(x_values(5:end-5),concentration_all{j}(5:end-5), 'DisplayName', names{j})
+    plot(x_values(5:end-5),concentration_all{j}(5:end-5), 'DisplayName', names{j},'LineWidth',1)
 end
 xlabel('Radius');
 ylabel('Concentration');
 title('Plot of Concentration in the radial direction');
 legend('show');
 hold off
+saveas(gcf, fullfile('../outputs/graphs/battery/concentrationOnRadialDirection.fig'));
